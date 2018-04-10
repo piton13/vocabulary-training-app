@@ -30,6 +30,16 @@ Below you'll find information about performing common tasks. The most recent ver
   * [iOS Simulator won't open](#ios-simulator-wont-open)
   * [QR Code does not scan](#qr-code-does-not-scan)
 
+## Features to implement
+    * Implement simple routing
+    * Implement 'Train not learned words' page
+        * Connection to DB should be implemented
+    * Implement 'Add new word' page
+    * See learned and not learned words page (should be numbers only, with possibility to see exact words)
+    * Implement push notifications that training time has come.
+    * Implement configuration page (to configure connection to DB, time of frequency trainings, multi language in future)
+    * ( Refresh words after 3-6 month after learning them )
+
 ## Updating to New Releases
 
 You should only need to update the global installation of `create-react-native-app` very rarely, ideally never.
