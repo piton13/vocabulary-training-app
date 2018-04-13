@@ -32,6 +32,7 @@ Below you'll find information about performing common tasks. The most recent ver
 
 ## Features to implement
     - [x] * Implement simple routing
+    - [x] * Implement simple http request
     - [ ] * Implement 'Train not learned words' page
              * Connection to DB should be implemented
     - [ ] * Implement 'Add new word' page
