@@ -27,7 +27,7 @@ export class MainScreen extends React.Component {
               accessibilityLabel="Move to training not learned words page"
           />
           <Button
-              onPress={this.onPressLearnMore.bind(this)}
+              onPress={() => { navigate('AddWords', { params: 'some params' }); }}
               title="Add new words"
               color={GLOBALS.COLOR.BLUE_BUTTON}
               disabled={false}
@@ -40,7 +40,6 @@ export class MainScreen extends React.Component {
               disabled={true}
               accessibilityLabel="Move to learning statistic page"
           />
-          <AddWordsComponent/>
           <ProgressComponent/>
           <TrainingComponent/>
       </View>

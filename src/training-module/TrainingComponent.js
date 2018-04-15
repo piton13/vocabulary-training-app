@@ -7,12 +7,12 @@ export default class TrainingComponent extends React.Component {
         title: 'Train your words',
     };
     componentDidMount() {
-        fetch(`${GLOBALS.BASE_URL}/users`, {
+        fetch(`${GLOBALS.BASE_URL}/words`, {
             method: 'GET'
         })
         .then((response) => response.json())
         .then((responseJson) => {
-            alert(`it's json: ${responseJson[0].name} ${responseJson[0].age}`);
+            alert(`it's json: ${responseJson[0].foreign} ${responseJson[0].translation}`);
             /*this.setState({
                 data: responseJson
             })*/
