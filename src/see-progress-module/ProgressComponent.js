@@ -1,15 +1,62 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import GLOBALS from '../globalVariables';
 
 export default class ProgressComponent extends React.Component {
     static navigationOptions = {
         title: 'Your learned and not learned statistic',
     };
+
+    state = { fetchedData: null };
+
+    componentDidMount() {
+        fetch(`${GLOBALS.BASE_URL}/words/statistic`, {
+            method: 'GET'
+        })
+        .then((response) => response.json())
+        .then((responseJson) => {
+            this.setState({
+                fetchedData: responseJson
+            });
+        })
+        .catch((error) => {
+            alert(error);
+        });
+    }
+
     render() {
+        if (this.state.fetchedData === null) {
+            return null;
+        }
         return (
             <View>
-                <Text>It's progress component</Text>
+                <TouchableOpacity
+                    style = {styles.container}>
+                    <Text style = {styles.text}>
+                        Learned words: {this.state.fetchedData.learned}
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style = {styles.container}>
+                    <Text style = {styles.text}>
+                        Not learned words: {this.state.fetchedData.notLearned}
+                    </Text>
+                </TouchableOpacity>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 10,
+        marginTop: 3,
+        backgroundColor: '#d9f9b1',
+        alignItems: 'center'
+    },
+    text: {
+        color: '#4f603c',
+        fontSize: 28,
+        fontWeight: 'bold'
+    }
+});

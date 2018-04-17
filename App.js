@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import GLOBALS from './src/globalVariables';
 import AddWordsComponent from './src/add-words-module/AddWords-component';
@@ -10,14 +10,17 @@ export class MainScreen extends React.Component {
     static navigationOptions = {
         title: 'Welcome',
     };
-    onPressLearnMore() {
-        alert('button is pressed');
-    }
+
   render() {
       // app should be reloaded automatically on android device
       const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+          <TouchableOpacity>
+              <Text style={styles.buttonText}>
+                  TRAIN WORDS
+              </Text>
+          </TouchableOpacity>
           <Button
               onPress={() => { navigate('Trainings', { params: 'some params' }); }}
               title="Train words"
@@ -34,14 +37,11 @@ export class MainScreen extends React.Component {
               accessibilityLabel="Move to adding new words to DB page"
           />
           <Button
-              onPress={this.onPressLearnMore.bind(this)}
+              onPress={() => { navigate('Statistic', {}) }}
               title="See statistic"
               color={GLOBALS.COLOR.BLUE_BUTTON}
-              disabled={true}
               accessibilityLabel="Move to learning statistic page"
           />
-          <ProgressComponent/>
-          <TrainingComponent/>
       </View>
     );
   }
@@ -57,10 +57,24 @@ const App = StackNavigator({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'stretch',
+    padding: 50,
+    paddingTop: 0,
     backgroundColor: GLOBALS.COLOR.BACKGROUND,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
+  buttonText: {
+      borderWidth: 1,
+      marginTop: 50,
+      padding: 20,
+      borderColor: 'black',
+      backgroundColor: GLOBALS.COLOR.BLUE_BUTTON,
+      color: 'white',
+      textAlign: 'center',
+      fontSize: 18,
+      fontWeight: 'bold'
+  }
 });
 
 export default App;

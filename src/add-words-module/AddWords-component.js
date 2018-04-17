@@ -3,13 +3,18 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import GLOBALS from '../globalVariables';
 
 export default class AddWordsComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            word: '',
+            translation: ''
+        };
+    }
+
     static navigationOptions = {
         title: 'Add new words to learn',
     };
-    state = {
-        word: '',
-        translation: ''
-    };
+
     handleWord = (text) => {
         this.setState({
             word: text
@@ -34,10 +39,8 @@ export default class AddWordsComponent extends React.Component {
         }).then(respose => respose.json())
             .then((response) => {
                 alert(JSON.stringify(response));
-                this.setState({
-                    word: '',
-                    translation: ''
-                }).bind(this);
+                const { navigate } = this.props.navigation;
+                navigate('Home', {});
         }).catch((error) => {alert(`something went wrong: ${error}`)});
     };
     render() {
