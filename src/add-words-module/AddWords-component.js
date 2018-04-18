@@ -56,12 +56,8 @@ export default class AddWordsComponent extends React.Component {
                 foreign: this.state.word,
                 translation: this.state.translation,
             })
-        }).then(respose => respose.json())
-            .then((response) => {
-                alert(JSON.stringify(response));
-                const { navigate } = this.props.navigation;
-                navigate('Home', {});
-        }).catch((error) => {alert(`something went wrong: ${error}`)});
+        }).then(() => this.props.navigation.goBack())
+          .catch((error) => {alert(`something went wrong: ${error}`)});
     };
     render() {
         return (

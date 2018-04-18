@@ -27,7 +27,7 @@ export class MainScreen extends React.Component {
     return (
       <View style={styles.container}>
           <TouchableOpacity style={styles.buttonContainer}
-                            onPress={() => { navigate('Trainings', { params: 'some params' }); }}
+                            onPress={() => { navigate('Trainings', { currentWord: 0 }); }}
                             disabled={false}
                             accessibilityLabel="Move to training not learned words page"
                             testId={'move to train words state'}>
@@ -60,7 +60,8 @@ const App = StackNavigator({
     Trainings: { screen: TrainingComponent },
     Statistic: { screen: ProgressComponent },
     AddWords: { screen: AddWordsComponent },
-    ListWordsComponent: { screen: LearnedWordsComponent }
+    ListWordsComponent: { screen: LearnedWordsComponent },
+    initialRouteName: 'Home'
 });
 
 export default App;

@@ -9,7 +9,6 @@ export default class TrainingComponent extends React.Component {
 
     state = {
         wordsToLearn: null,
-        currentWord: 0,
         translationForCurrentWord: ''
     };
 
@@ -22,16 +21,10 @@ export default class TrainingComponent extends React.Component {
             this.setState({
                 wordsToLearn: responseJson
             });
-            alert(`it's json: ${responseJson[0].foreign} ${responseJson[0].translation}`);
         })
         .catch((error) => {
             alert(error);
         });
-    }
-
-    getCurrentWord() {
-        // return this.state.wordsToLearn[this.state.currentWord];
-        return 'abc';
     }
 
     handleTranslation = (word) => {
@@ -40,21 +33,27 @@ export default class TrainingComponent extends React.Component {
         });
     };
 
+    moveBack = () => {
+        this.props.navigation.goBack();
+    };
+
     checkAnswer = () => {
-        alert(this.state.translationForCurrentWord);
+        if (this.props.navigation.state.params.currentWord === this.state.wordsToLearn.length - 1) {
+            return this.moveBack();
+        }
+        this.props.navigation.setParams({currentWord: ++this.props.navigation.state.params.currentWord});
     };
 
     render() {
+        const { params } = this.props.navigation.state;
         if (this.state.wordsToLearn === null) {
             return null;
         }
         return (
             <View>
-                <Text>It's training component</Text>
-                <TouchableOpacity
-                    style = {styles.container}>
-                    <Text style = {styles.text}>
-                        {this.state.currentWord}. {this.getCurrentWord()}
+                <TouchableOpacity style={styles.container}>
+                    <Text style={styles.text}>
+                        {params.currentWord}. {this.state.wordsToLearn[params.currentWord].foreign}
                     </Text>
                     <TextInput style={styles.input}
                                underlineColorAndroid='transparent'
@@ -63,6 +62,11 @@ export default class TrainingComponent extends React.Component {
                                autoCapitalize = "none"
                                onChangeText={this.handleTranslation}/>
 
+                    <TouchableOpacity
+                        style = {styles.submitButton}
+                        onPress = {this.moveBack}>
+                        <Text style={styles.submitButtonText}> Cancel </Text>
+                    </TouchableOpacity>
                     <TouchableOpacity
                         style = {styles.submitButton}
                         onPress = {this.checkAnswer}>

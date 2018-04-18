@@ -15,7 +15,8 @@ export default class LearnedWordsComponent extends React.Component {
     // should be list of items with preload from server on demand
 
     componentDidMount() {
-        fetch(`${GLOBALS.BASE_URL}/words?learned=true`, {
+        const { params } = this.props.navigation.state;
+        fetch(`${GLOBALS.BASE_URL}/words?learned=${params.learned}`, {
             method: 'GET'
         })
             .then((response) => response.json())
