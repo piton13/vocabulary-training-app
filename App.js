@@ -6,6 +6,7 @@ import CONTAINER from './src/styles/CONTAINER';
 import AddWordsComponent from './src/add-words-module/AddWords-component';
 import ProgressComponent from './src/see-progress-module/ProgressComponent';
 import TrainingComponent from './src/training-module/TrainingComponent';
+import LearnedWordsComponent from './src/see-progress-module/LearnedWordsComponent';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.COLUMN),
@@ -58,7 +59,8 @@ const App = StackNavigator({
     Home: { screen: MainScreen },
     Trainings: { screen: TrainingComponent },
     Statistic: { screen: ProgressComponent },
-    AddWords: { screen: AddWordsComponent }
+    AddWords: { screen: AddWordsComponent },
+    ListWordsComponent: { screen: LearnedWordsComponent }
 });
 
 export default App;

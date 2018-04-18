@@ -25,20 +25,21 @@ export default class ProgressComponent extends React.Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
         if (this.state.fetchedData === null) {
             return null;
         }
         return (
             <View>
-                <TouchableOpacity
-                    style = {styles.container}>
-                    <Text style = {styles.text}>
+                <TouchableOpacity style={styles.container}
+                                  onPress={() => { navigate('ListWordsComponent', { learned: true }); }}>
+                    <Text style={styles.text}>
                         Learned words: {this.state.fetchedData.learned}
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    style = {styles.container}>
-                    <Text style = {styles.text}>
+                <TouchableOpacity style={styles.container}
+                                  onPress={() => { navigate('ListWordsComponent', { learned: false }); }}>
+                    <Text style={styles.text}>
                         Not learned words: {this.state.fetchedData.notLearned}
                     </Text>
                 </TouchableOpacity>
