@@ -1,10 +1,19 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import GLOBALS from './src/globalVariables';
+import BUTTON from './src/styles/BUTTON';
+import CONTAINER from './src/styles/CONTAINER';
 import AddWordsComponent from './src/add-words-module/AddWords-component';
 import ProgressComponent from './src/see-progress-module/ProgressComponent';
 import TrainingComponent from './src/training-module/TrainingComponent';
+
+const styles = StyleSheet.create({
+    container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.COLUMN),
+    buttonContainer: BUTTON.CONTAINER,
+    buttonText: BUTTON.TEXT,
+    buttonTextGreen: Object.assign({}, BUTTON.TEXT, BUTTON.GREEN),
+    buttonTextViolet: Object.assign({}, BUTTON.TEXT, BUTTON.VIOLET),
+});
 
 export class MainScreen extends React.Component {
     static navigationOptions = {
@@ -16,30 +25,28 @@ export class MainScreen extends React.Component {
       const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-          <TouchableOpacity>
+          <TouchableOpacity style={styles.buttonContainer}
+                            onPress={() => { navigate('Trainings', { params: 'some params' }); }}
+                            disabled={false}
+                            accessibilityLabel="Move to training not learned words page"
+                            testId={'move to train words state'}>
               <Text style={styles.buttonText}>
                   TRAIN WORDS
               </Text>
           </TouchableOpacity>
-          <Button
-              onPress={() => { navigate('Trainings', { params: 'some params' }); }}
-              title="Train words"
-              color={GLOBALS.COLOR.BLUE_BUTTON}
-              disabled={false}
-              testId={'move to train words state'}
-              accessibilityLabel="Move to training not learned words page"
-          />
-          <Button
-              onPress={() => { navigate('AddWords', { params: 'some params' }); }}
-              title="Add new words"
-              color={GLOBALS.COLOR.BLUE_BUTTON}
-              disabled={false}
-              accessibilityLabel="Move to adding new words to DB page"
-          />
+          <TouchableOpacity style={styles.buttonContainer}
+                            onPress={() => { navigate('AddWords', { params: 'some params' }); }}
+                            disabled={false}
+                            accessibilityLabel="Move to adding new words to DB page"
+                            testId={'move to adding new words state'}>
+              <Text style={styles.buttonTextGreen}>
+                  ADD NEW WORDS
+              </Text>
+          </TouchableOpacity>
           <Button
               onPress={() => { navigate('Statistic', {}) }}
               title="See statistic"
-              color={GLOBALS.COLOR.BLUE_BUTTON}
+              color={'purple'}
               accessibilityLabel="Move to learning statistic page"
           />
       </View>
@@ -52,29 +59,6 @@ const App = StackNavigator({
     Trainings: { screen: TrainingComponent },
     Statistic: { screen: ProgressComponent },
     AddWords: { screen: AddWordsComponent }
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'stretch',
-    padding: 50,
-    paddingTop: 0,
-    backgroundColor: GLOBALS.COLOR.BACKGROUND,
-  },
-  buttonText: {
-      borderWidth: 1,
-      marginTop: 50,
-      padding: 20,
-      borderColor: 'black',
-      backgroundColor: GLOBALS.COLOR.BLUE_BUTTON,
-      color: 'white',
-      textAlign: 'center',
-      fontSize: 18,
-      fontWeight: 'bold'
-  }
 });
 
 export default App;

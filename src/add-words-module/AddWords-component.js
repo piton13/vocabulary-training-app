@@ -1,6 +1,26 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import GLOBALS from '../globalVariables';
+import CONTAINER from '../styles/CONTAINER';
+import BUTTON from '../styles/BUTTON';
+
+const styles = StyleSheet.create({
+    container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.JUSTIFY_START, CONTAINER.COLUMN),
+
+    buttonContainer: BUTTON.CONTAINER,
+    buttonText: BUTTON.TEXT,
+    buttonTextViolet: Object.assign({}, BUTTON.TEXT, BUTTON.VIOLET),
+    input: {
+        marginTop: 15,
+        marginBottom: 15,
+        padding: 20,
+        borderColor: '#7a42f4',
+        borderWidth: 1,
+        borderRadius: 8,
+        fontSize: 24,
+        fontWeight: 'bold'
+    }
+});
 
 export default class AddWordsComponent extends React.Component {
     constructor(props) {
@@ -45,8 +65,7 @@ export default class AddWordsComponent extends React.Component {
     };
     render() {
         return (
-            <View>
-                <Text>It's add new words functionality</Text>
+            <View style={styles.container}>
                 <TextInput style={styles.input}
                            underlineColorAndroid='transparent'
                            placeholder='Foreign word'
@@ -61,32 +80,13 @@ export default class AddWordsComponent extends React.Component {
                            autoCapitalize = "none"
                            onChangeText={this.handleTranslation}/>
 
-                <TouchableOpacity
-                    style = {styles.submitButton}
-                    onPress = {
-                        () => this.saveWord()
-                    }>
-                    <Text style={styles.submitButtonText}> Submit </Text>
+                <TouchableOpacity style={styles.buttonContainer}
+                                  onPress={() => this.saveWord()}
+                                  accessibilityLabel="Add new word button"
+                                  testId={'add new word'}>
+                    <Text style={styles.buttonTextViolet}> Submit </Text>
                 </TouchableOpacity>
             </View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    input: {
-        margin: 15,
-        height: 40,
-        borderColor: '#7a42f4',
-        borderWidth: 1
-    },
-    submitButton: {
-        backgroundColor: '#7a42f4',
-        padding: 10,
-        margin: 15,
-        height: 40,
-    },
-    submitButtonText:{
-        color: 'white'
-    }
-});
