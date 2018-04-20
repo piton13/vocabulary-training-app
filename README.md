@@ -35,8 +35,9 @@ Below you'll find information about performing common tasks. The most recent ver
     - [x] * Implement simple http request
     - [x] * Implement 'Add new word' page
     - [x] * See learned and not learned words page (should be numbers only, with possibility to see exact words)
-    - [ ] * Implement list of learned/not learned words; where user can modify translations of them
-    - [+/-] * Implement 'Train not learned words' page
+    - [x] * Implement list of learned/not learned words; where user can modify translations of them
+    - [+/-] * Implement 'Update translation functionality' page
+    - [+/-] * Implement 'Train not learned words' page (test it)
              * Connection to DB should be implemented
              * Check words on BE
     - [ ] * Implement push notifications that training time has come.

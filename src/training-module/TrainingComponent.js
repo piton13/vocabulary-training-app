@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text, TextInput } from 'react-native';
 import GLOBALS from '../globalVariables';
+import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
 
 export default class TrainingComponent extends React.Component {
     static navigationOptions = {
@@ -13,7 +14,7 @@ export default class TrainingComponent extends React.Component {
     };
 
     componentDidMount() {
-        fetch(`${GLOBALS.BASE_URL}/words`, {
+        fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.WORDS}`, {
             method: 'GET'
         })
         .then((response) => response.json())

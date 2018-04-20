@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import GLOBALS from '../globalVariables';
-import CONTAINER from '../styles/CONTAINER';
 import BUTTON from '../styles/BUTTON';
+import CONTAINER from '../styles/CONTAINER';
+import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.JUSTIFY_START, CONTAINER.COLUMN),
@@ -22,65 +23,58 @@ const styles = StyleSheet.create({
     }
 });
 
-export default class AddWordsComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            word: '',
-            translation: ''
-        };
-    }
-
+export default class UpdateWordComponent extends React.Component {
     static navigationOptions = {
-        title: 'Add new words to learn',
+        title: 'Edit current word',
     };
 
-    handleWord = (text) => {
-        this.setState({
-            word: text
-        });
+    state = {
+        word: this.props.navigation.state.params.wordObj.foreign,
+        translation: this.props.navigation.state.params.wordObj.translation
     };
+
     handleTranslation = (text) => {
         this.setState({
             translation: text
         });
     };
-    saveWord = () => {
-        fetch(`${GLOBALS.BASE_URL}/words`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
+
+    updateWord = () => {
+        fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.WORDS}`, {
+            method: 'PATCH',
             body: JSON.stringify({
-                foreign: this.state.word,
+                _id: this.props.navigation.state.params.wordObj._id,
                 translation: this.state.translation,
             })
         }).then(() => this.props.navigation.goBack())
-          .catch((error) => {alert(`something went wrong: ${error}`)});
+            .catch((error) => {alert(`something went wrong: ${error}`)});
     };
+
     render() {
         return (
             <View style={styles.container}>
                 <TextInput style={styles.input}
+                           disabled={true}
                            underlineColorAndroid='transparent'
                            placeholder='Foreign word'
                            placeholderTextColor = "#9a73ef"
                            autoCapitalize = "none"
-                           onChangeText={this.handleWord}/>
+                           value={this.state.word}/>
 
                 <TextInput style={styles.input}
                            underlineColorAndroid='transparent'
                            placeholder='Word translation'
                            placeholderTextColor = "#9a73ef"
                            autoCapitalize = "none"
-                           onChangeText={this.handleTranslation}/>
+                           onChangeText={this.handleTranslation}
+                           value={this.state.translation}/>
 
                 <TouchableOpacity style={styles.buttonContainer}
-                                  onPress={() => this.saveWord()}
-                                  accessibilityLabel="Add new word button"
-                                  testId={'add new word'}>
-                    <Text style={styles.buttonTextViolet}> Submit </Text>
+                                  onPress={() => this.updateWord()}
+                                  disabled={!this.state.word || !this.state.translation}
+                                  accessibilityLabel="Update word button"
+                                  testId={'update word'}>
+                    <Text style={styles.buttonTextViolet}> Update </Text>
                 </TouchableOpacity>
             </View>
         )

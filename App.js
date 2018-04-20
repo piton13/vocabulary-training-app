@@ -3,10 +3,11 @@ import { TouchableOpacity, Text, StyleSheet, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import BUTTON from './src/styles/BUTTON';
 import CONTAINER from './src/styles/CONTAINER';
-import AddWordsComponent from './src/add-words-module/AddWords-component';
+import AddWordsComponent from './src/add-words-module/AddWordsComponent';
+import UpdateWordComponent from './src/add-words-module/UpdateWordComponent';
 import ProgressComponent from './src/see-progress-module/ProgressComponent';
 import TrainingComponent from './src/training-module/TrainingComponent';
-import LearnedWordsComponent from './src/see-progress-module/LearnedWordsComponent';
+import WordsListComponent from './src/see-progress-module/WordsListComponent';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.COLUMN),
@@ -22,8 +23,8 @@ export class MainScreen extends React.Component {
     };
 
   render() {
-      // app should be reloaded automatically on android device
-      const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation;
+
     return (
       <View style={styles.container}>
           <TouchableOpacity style={styles.buttonContainer}
@@ -36,7 +37,7 @@ export class MainScreen extends React.Component {
               </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonContainer}
-                            onPress={() => { navigate('AddWords', { params: 'some params' }); }}
+                            onPress={() => { navigate('AddWords', {}); }}
                             disabled={false}
                             accessibilityLabel="Move to adding new words to DB page"
                             testId={'move to adding new words state'}>
@@ -60,7 +61,8 @@ const App = StackNavigator({
     Trainings: { screen: TrainingComponent },
     Statistic: { screen: ProgressComponent },
     AddWords: { screen: AddWordsComponent },
-    ListWordsComponent: { screen: LearnedWordsComponent },
+    UpdateWord: { screen: UpdateWordComponent },
+    WordsList: { screen: WordsListComponent },
     initialRouteName: 'Home'
 });
 

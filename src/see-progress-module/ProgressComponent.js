@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import GLOBALS from '../globalVariables';
+import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
 
 export default class ProgressComponent extends React.Component {
     static navigationOptions = {
@@ -10,7 +11,7 @@ export default class ProgressComponent extends React.Component {
     state = { fetchedData: null };
 
     componentDidMount() {
-        fetch(`${GLOBALS.BASE_URL}/words/statistic`, {
+        fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.WORDS_STATISTIC}`, {
             method: 'GET'
         })
         .then((response) => response.json())
@@ -32,13 +33,13 @@ export default class ProgressComponent extends React.Component {
         return (
             <View>
                 <TouchableOpacity style={styles.container}
-                                  onPress={() => { navigate('ListWordsComponent', { learned: true }); }}>
+                                  onPress={() => { navigate('WordsList', { learned: true }); }}>
                     <Text style={styles.text}>
                         Learned words: {this.state.fetchedData.learned}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.container}
-                                  onPress={() => { navigate('ListWordsComponent', { learned: false }); }}>
+                                  onPress={() => { navigate('WordsList', { learned: false }); }}>
                     <Text style={styles.text}>
                         Not learned words: {this.state.fetchedData.notLearned}
                     </Text>
