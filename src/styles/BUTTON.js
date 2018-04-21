@@ -7,7 +7,7 @@ export default {
         borderColor: 'black'
     },
     TEXT: {
-        padding: 20,
+        padding: 14,
         borderRadius: 8,
         backgroundColor: GLOBALS.COLOR.BLUE_BUTTON,
         color: 'white',
@@ -20,5 +20,11 @@ export default {
     },
     VIOLET: {
         backgroundColor: GLOBALS.COLOR.VIOLET_BUTTON
+    },
+    PURPLE: {
+        backgroundColor: 'purple'
+    },
+    ORANGE: {
+        backgroundColor: 'orange'
     }
 }

@@ -3,16 +3,16 @@ import GLOBALS from '../globalVariables';
 export default {
     CONTAINER: {
         flex: 1,
-        justifyContent: 'space-around',
+        justifyContent: 'flex-start',
         alignItems: 'stretch',
-        padding: 50,
+        padding: 35,
         paddingTop: 0,
         backgroundColor: GLOBALS.COLOR.BACKGROUND,
     },
-    JUSTIFY_START: {
-        justifyContent: 'flex-start'
-    },
     COLUMN: {
         flexDirection: 'column'
+    },
+    ROW: {
+        flexDirection: 'row'
     }
 }

@@ -11,10 +11,10 @@ import WordsListComponent from './src/see-progress-module/WordsListComponent';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.COLUMN),
-    buttonContainer: BUTTON.CONTAINER,
+    buttonContainer: Object.assign({marginTop: 30}, BUTTON.CONTAINER),
     buttonText: BUTTON.TEXT,
     buttonTextGreen: Object.assign({}, BUTTON.TEXT, BUTTON.GREEN),
-    buttonTextViolet: Object.assign({}, BUTTON.TEXT, BUTTON.VIOLET),
+    buttonTextPurple: Object.assign({}, BUTTON.TEXT, BUTTON.PURPLE),
 });
 
 export class MainScreen extends React.Component {
@@ -36,6 +36,7 @@ export class MainScreen extends React.Component {
                   TRAIN WORDS
               </Text>
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.buttonContainer}
                             onPress={() => { navigate('AddWords', {}); }}
                             disabled={false}
@@ -45,12 +46,16 @@ export class MainScreen extends React.Component {
                   ADD NEW WORDS
               </Text>
           </TouchableOpacity>
-          <Button
-              onPress={() => { navigate('Statistic', {}) }}
-              title="See statistic"
-              color={'purple'}
-              accessibilityLabel="Move to learning statistic page"
-          />
+
+          <TouchableOpacity style={styles.buttonContainer}
+                            onPress={() => { navigate('Statistic', {}); }}
+                            disabled={false}
+                            accessibilityLabel="Move to learning statistic page"
+                            testId={'move to learning statistic page'}>
+              <Text style={styles.buttonTextPurple}>
+                  SEE STATISTIC
+              </Text>
+          </TouchableOpacity>
       </View>
     );
   }

@@ -1,26 +1,18 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import GLOBALS from '../globalVariables';
+import INPUT from '../styles/INPUT';
 import BUTTON from '../styles/BUTTON';
 import CONTAINER from '../styles/CONTAINER';
 import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
 
 const styles = StyleSheet.create({
-    container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.JUSTIFY_START, CONTAINER.COLUMN),
+    container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.COLUMN),
 
     buttonContainer: BUTTON.CONTAINER,
     buttonText: BUTTON.TEXT,
     buttonTextViolet: Object.assign({}, BUTTON.TEXT, BUTTON.VIOLET),
-    input: {
-        marginTop: 15,
-        marginBottom: 15,
-        padding: 20,
-        borderColor: '#7a42f4',
-        borderWidth: 1,
-        borderRadius: 8,
-        fontSize: 24,
-        fontWeight: 'bold'
-    }
+    input: INPUT.COMMON
 });
 
 export default class UpdateWordComponent extends React.Component {
