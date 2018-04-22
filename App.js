@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, View, Button } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import BUTTON from './src/styles/BUTTON';
 import CONTAINER from './src/styles/CONTAINER';
@@ -10,9 +10,9 @@ import TrainingComponent from './src/training-module/TrainingComponent';
 import WordsListComponent from './src/see-progress-module/WordsListComponent';
 
 const styles = StyleSheet.create({
-    container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.COLUMN),
+    container: Object.assign({}, CONTAINER.CONTAINER),
     buttonContainer: Object.assign({marginTop: 30}, BUTTON.CONTAINER),
-    buttonText: BUTTON.TEXT,
+    buttonTextBlue: Object.assign({}, BUTTON.TEXT, BUTTON.BLUE),
     buttonTextGreen: Object.assign({}, BUTTON.TEXT, BUTTON.GREEN),
     buttonTextPurple: Object.assign({}, BUTTON.TEXT, BUTTON.PURPLE),
 });
@@ -32,7 +32,7 @@ export class MainScreen extends React.Component {
                             disabled={false}
                             accessibilityLabel="Move to training not learned words page"
                             testId={'move to train words state'}>
-              <Text style={styles.buttonText}>
+              <Text style={styles.buttonTextBlue}>
                   TRAIN WORDS
               </Text>
           </TouchableOpacity>

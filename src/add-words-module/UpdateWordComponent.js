@@ -7,12 +7,10 @@ import CONTAINER from '../styles/CONTAINER';
 import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
 
 const styles = StyleSheet.create({
-    container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.COLUMN),
-
+    container: Object.assign({}, CONTAINER.CONTAINER),
     buttonContainer: BUTTON.CONTAINER,
-    buttonText: BUTTON.TEXT,
-    buttonTextViolet: Object.assign({}, BUTTON.TEXT, BUTTON.VIOLET),
-    input: INPUT.COMMON
+    buttonText: Object.assign({}, BUTTON.TEXT, BUTTON.VIOLET),
+    input: Object.assign({}, INPUT.COMMON, INPUT.VIOLET)
 });
 
 export default class UpdateWordComponent extends React.Component {
@@ -49,14 +47,14 @@ export default class UpdateWordComponent extends React.Component {
                            disabled={true}
                            underlineColorAndroid='transparent'
                            placeholder='Foreign word'
-                           placeholderTextColor = "#9a73ef"
+                           placeholderTextColor={GLOBALS.COLOR.VIOLET}
                            autoCapitalize = "none"
                            value={this.state.word}/>
 
                 <TextInput style={styles.input}
                            underlineColorAndroid='transparent'
                            placeholder='Word translation'
-                           placeholderTextColor = "#9a73ef"
+                           placeholderTextColor={GLOBALS.COLOR.VIOLET}
                            autoCapitalize = "none"
                            onChangeText={this.handleTranslation}
                            value={this.state.translation}/>
@@ -66,7 +64,7 @@ export default class UpdateWordComponent extends React.Component {
                                   disabled={!this.state.word || !this.state.translation}
                                   accessibilityLabel="Update word button"
                                   testId={'update word'}>
-                    <Text style={styles.buttonTextViolet}> Update </Text>
+                    <Text style={styles.buttonText}> Update </Text>
                 </TouchableOpacity>
             </View>
         )

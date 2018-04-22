@@ -7,16 +7,15 @@ import CONTAINER from '../styles/CONTAINER';
 import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
 
 const styles = StyleSheet.create({
-    container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.COLUMN),
+    container: Object.assign({}, CONTAINER.CONTAINER),
     text: {
-        color: GLOBALS.COLOR.BLUE_BUTTON,
+        color: GLOBALS.COLOR.BLUE,
         fontSize: 28,
         fontWeight: 'bold'
     },
-    input: Object.assign({}, INPUT.COMMON, {backgroundColor: GLOBALS.COLOR.BLUE_BUTTON}),
-
+    input: Object.assign({}, INPUT.COMMON, INPUT.BLUE),
     buttonContainer: BUTTON.CONTAINER,
-    buttonTextBlue: Object.assign({}, BUTTON.TEXT)
+    buttonText: Object.assign({}, BUTTON.TEXT, BUTTON.BLUE)
 });
 
 export default class TrainingComponent extends React.Component {
@@ -86,7 +85,7 @@ export default class TrainingComponent extends React.Component {
                 <TextInput style={styles.input}
                            underlineColorAndroid='transparent'
                            placeholder='Translation for the word'
-                           placeholderTextColor={GLOBALS.COLOR.BACKGROUND}
+                           placeholderTextColor={GLOBALS.COLOR.BLUE}
                            autoCapitalize="none"
                            onChangeText={this.handleTranslation}/>
 
@@ -95,7 +94,7 @@ export default class TrainingComponent extends React.Component {
                     onPress = {this.checkAnswer}
                     accessibilityLabel="Check answer"
                     testId={'check answer'}>
-                    <Text style={styles.buttonTextBlue}> Check answer </Text>
+                    <Text style={styles.buttonText}> Check answer </Text>
                 </TouchableOpacity>
             </View>
         )

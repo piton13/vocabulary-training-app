@@ -7,10 +7,10 @@ import CONTAINER from '../styles/CONTAINER';
 import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
 
 const styles = StyleSheet.create({
-    container: Object.assign({}, CONTAINER.CONTAINER, CONTAINER.COLUMN),
+    container: Object.assign({}, CONTAINER.CONTAINER),
+    input: Object.assign({}, INPUT.COMMON, INPUT.GREEN),
     buttonContainer: BUTTON.CONTAINER,
-    buttonTextViolet: Object.assign({}, BUTTON.TEXT, BUTTON.VIOLET),
-    input: INPUT.COMMON
+    buttonText: Object.assign({}, BUTTON.TEXT, BUTTON.GREEN)
 });
 
 export default class AddWordsComponent extends React.Component {
@@ -53,14 +53,14 @@ export default class AddWordsComponent extends React.Component {
                 <TextInput style={styles.input}
                            underlineColorAndroid='transparent'
                            placeholder='Foreign word'
-                           placeholderTextColor = "#9a73ef"
+                           placeholderTextColor={GLOBALS.COLOR.GREEN}
                            autoCapitalize = "none"
                            onChangeText={this.handleWord}/>
 
                 <TextInput style={styles.input}
                            underlineColorAndroid='transparent'
                            placeholder='Word translation'
-                           placeholderTextColor = "#9a73ef"
+                           placeholderTextColor={GLOBALS.COLOR.GREEN}
                            autoCapitalize = "none"
                            onChangeText={this.handleTranslation}/>
 
@@ -69,7 +69,7 @@ export default class AddWordsComponent extends React.Component {
                                   disabled={!this.state.word || !this.state.translation}
                                   accessibilityLabel="Add new word button"
                                   testId={'add new word'}>
-                    <Text style={styles.buttonTextViolet}> Submit </Text>
+                    <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
             </View>
         )

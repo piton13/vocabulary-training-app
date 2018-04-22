@@ -6,25 +6,26 @@ export default {
         borderRadius: 8,
         borderColor: 'black'
     },
-    TEXT: {
-        padding: 14,
-        borderRadius: 8,
-        backgroundColor: GLOBALS.COLOR.BLUE_BUTTON,
+    TEXT: Object.assign({
+        backgroundColor: 'black',
         color: 'white',
         textAlign: 'center',
-        fontSize: 18,
+        fontSize: 24,
         fontWeight: 'bold'
+    }, {
+        padding: 14,
+        borderRadius: 8
+    }),
+    BLUE: {
+        backgroundColor: GLOBALS.COLOR.BLUE
     },
     GREEN: {
-        backgroundColor: 'green'
+        backgroundColor: GLOBALS.COLOR.GREEN
     },
     VIOLET: {
-        backgroundColor: GLOBALS.COLOR.VIOLET_BUTTON
+        backgroundColor: GLOBALS.COLOR.VIOLET
     },
     PURPLE: {
-        backgroundColor: 'purple'
-    },
-    ORANGE: {
-        backgroundColor: 'orange'
+        backgroundColor: GLOBALS.COLOR.PURPLE
     }
 }

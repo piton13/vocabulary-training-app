@@ -3,6 +3,20 @@ import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import GLOBALS from '../globalVariables';
 import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
 
+const styles = StyleSheet.create({
+    container: {
+        padding: 10,
+        marginTop: 3,
+        backgroundColor: '#d9f9b1',
+        alignItems: 'center'
+    },
+    text: {
+        color: '#4f603c',
+        fontSize: 28,
+        fontWeight: 'bold'
+    }
+});
+
 export default class ProgressComponent extends React.Component {
     static navigationOptions = {
         title: 'Your learned and not learned statistic',
@@ -48,17 +62,3 @@ export default class ProgressComponent extends React.Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 10,
-        marginTop: 3,
-        backgroundColor: '#d9f9b1',
-        alignItems: 'center'
-    },
-    text: {
-        color: '#4f603c',
-        fontSize: 28,
-        fontWeight: 'bold'
-    }
-});
