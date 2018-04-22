@@ -36,14 +36,19 @@ Below you'll find information about performing common tasks. The most recent ver
     - [x] * Implement 'Add new word' page
     - [x] * See learned and not learned words page (should be numbers only, with possibility to see exact words)
     - [x] * Implement list of learned/not learned words; where user can modify translations of them
+      [ ]    * Upload words on demand;
     - [x] * Implement 'Update translation functionality' page
-    - [+/-] * Implement 'Train not learned words' page (test it)
-             * Connection to DB should be implemented
-             * Check words on BE
+    - [x] * Implement 'Train not learned words'
+      [x]    * Check words on BE
+      [ ]    * Implement notification of correctness of answers
     - [ ] * Implement login page and authorization
+      [ ]    * Connection to DB should be implemented on login
     - [ ] * Implement push notifications that training time has come.
     - [ ] * Implement configuration page (to configure connection to DB, time of frequency trainings, multi language in future)
     - [ ] * ( Refresh words after 3-6 month after learning them )
+    - [ ] * Configure CI
+    - [ ] * Deploy the app to google store
+    - [ ] * Check the app on ios devices
     - [ ] * Add unit tests and integration also (try to test screens for styling)
 
 ## Updating to New Releases
