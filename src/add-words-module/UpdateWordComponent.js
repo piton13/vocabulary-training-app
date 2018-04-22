@@ -31,12 +31,16 @@ export default class UpdateWordComponent extends React.Component {
 
     updateWord = () => {
         fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.WORDS}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
             method: 'PATCH',
             body: JSON.stringify({
                 _id: this.props.navigation.state.params.wordObj._id,
                 translation: this.state.translation,
             })
-        }).then(() => this.props.navigation.goBack())
+        })
+            .then(() => this.props.navigation.goBack())
             .catch((error) => {alert(`something went wrong: ${error}`)});
     };
 

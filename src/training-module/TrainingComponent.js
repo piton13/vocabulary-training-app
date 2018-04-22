@@ -50,27 +50,40 @@ export default class TrainingComponent extends React.Component {
     };
 
     checkAnswer = () => {
-        if (this.props.navigation.state.params.currentWord === this.state.wordsToLearn.length - 1) {
-            return this.props.navigation.goBack();
-        }
-
+        const { currentWord } = this.props.navigation.state.params;
 
         fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.LEARN_WORDS}`, {
-            method: 'PATCH'
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'PATCH',
+            body: JSON.stringify({
+                _id: this.state.wordsToLearn[currentWord]._id,
+                translation: this.state.translationForCurrentWord
+            })
         })
-            .then(() => {
-                alert('answer was correct');
+            .then((response) => {
             })
             .catch(() => {
-                alert('answer was not correct');
             })
             .finally(() => {
-                this.props.navigation.setParams({currentWord: ++this.props.navigation.state.params.currentWord});
+                if (currentWord === this.state.wordsToLearn.length -1) {
+                    return this.props.navigation.goBack();
+                }
+                this.props.navigation.setParams({
+                    currentWord: currentWord + 1
+                });
+                this.setState({
+                    translationForCurrentWord: ''
+                });
             });
     };
 
     render() {
         const { params } = this.props.navigation.state;
+        const word = this.state.wordsToLearn
+            && this.state.wordsToLearn[params.currentWord]
+            && this.state.wordsToLearn[params.currentWord].foreign;
 
         if (this.state.wordsToLearn === null) {
             return null;
@@ -79,7 +92,7 @@ export default class TrainingComponent extends React.Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>
-                    {params.currentWord}. {this.state.wordsToLearn[params.currentWord].foreign}
+                    {params.currentWord}. {word}
                 </Text>
 
                 <TextInput style={styles.input}
@@ -87,6 +100,7 @@ export default class TrainingComponent extends React.Component {
                            placeholder='Translation for the word'
                            placeholderTextColor={GLOBALS.COLOR.BLUE}
                            autoCapitalize="none"
+                           value={this.state.translationForCurrentWord}
                            onChangeText={this.handleTranslation}/>
 
                 <TouchableOpacity
