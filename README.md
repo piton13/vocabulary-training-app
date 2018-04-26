@@ -34,22 +34,18 @@ Below you'll find information about performing common tasks. The most recent ver
     - [x] * Implement simple routing
     - [x] * Implement simple http request
     - [x] * Implement 'Add new word' page
+    - [ ] * Implement 'Add new words without translations with possibility to update them'
+    - [x] * Implement 'Update translation functionality' page
     - [x] * See learned and not learned words page (should be numbers only, with possibility to see exact words)
     - [x] * Implement list of learned/not learned words; where user can modify translations of them
-      [ ]    * Upload words on demand;
-    - [x] * Implement 'Update translation functionality' page
+      [ ]    * Upload words on demand; (flat list or flat list section)
     - [x] * Implement 'Train not learned words'
       [x]    * Check words on BE
       [ ]    * Implement notification of correctness of answers
     - [ ] * Implement login page and authorization
-      [ ]    * Connection to DB should be implemented on login
     - [ ] * Implement push notifications that training time has come.
     - [ ] * Implement configuration page (to configure connection to DB, time of frequency trainings, multi language in future)
     - [ ] * ( Refresh words after 3-6 month after learning them )
-    - [ ] * Configure CI
-    - [ ] * Deploy the app to google store
-    - [ ] * Check the app on ios devices
-    - [ ] * Add unit tests and integration also (try to test screens for styling)
 
 ## Updating to New Releases
 
@@ -242,3 +238,12 @@ There are a few steps you may want to take to troubleshoot these kinds of errors
 If you're not able to scan the QR code, make sure your phone's camera is focusing correctly, and also make sure that the contrast on the two colors in your terminal is high enough. For example, WebStorm's default themes may [not have enough contrast](https://github.com/react-community/create-react-native-app/issues/49) for terminal QR codes to be scannable with the system barcode scanners that the Expo app uses.
 
 If this causes problems for you, you may want to try changing your terminal's color theme to have more contrast, or running Create React Native App from a different terminal. You can also manually enter the URL printed by the packager script in the Expo app's search bar to load it manually.
+
+## Tech tasks to implement
+    - [ ] * Implement pushing crash reports to server
+    - [ ] * Implement offline first approach
+    - [ ] * Connection to DB should be implemented on login
+    - [ ] * Configure CI
+    - [ ] * Deploy the app to google store
+    - [ ] * Check the app on ios devices
+    - [ ] * Add unit tests and integration also (try to test screens for styling)
