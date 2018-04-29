@@ -1,7 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
-import GLOBALS from '../globalVariables';
-import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
+import wordsService from '../api/wordsHttpService';
 
 const styles = StyleSheet.create({
     container: {
@@ -28,17 +27,12 @@ export default class WordsListComponent extends React.Component {
 
     componentDidMount() {
         const { learned } = this.props.navigation.state.params;
-        fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.WORDS}?learned=${learned}`, {
-            method: 'GET'
-        })
-            .then((response) => response.json())
+
+        wordsService.getWords(learned)
             .then((responseJson) => {
                 this.setState({
                     obtainedItems: responseJson
                 });
-            })
-            .catch((error) => {
-                alert(error);
             });
     }
 

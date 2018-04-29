@@ -4,7 +4,7 @@ import GLOBALS from '../globalVariables';
 import INPUT from '../styles/INPUT';
 import BUTTON from '../styles/BUTTON';
 import CONTAINER from '../styles/CONTAINER';
-import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
+import learnWordsService from '../api/learnWordsHttpService';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -29,17 +29,11 @@ export default class TrainingComponent extends React.Component {
     };
 
     componentDidMount() {
-        fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.LEARN_WORDS}`, {
-            method: 'GET'
-        })
-        .then((response) => response.json())
+        learnWordsService.getTrainingWords()
         .then((responseJson) => {
             this.setState({
                 wordsToLearn: responseJson
             });
-        })
-        .catch((error) => {
-            alert(error);
         });
     }
 
@@ -52,16 +46,10 @@ export default class TrainingComponent extends React.Component {
     checkAnswer = () => {
         const { currentWord } = this.props.navigation.state.params;
 
-        fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.LEARN_WORDS}`, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'PATCH',
-            body: JSON.stringify({
+        learnWordsService.checkAnswer({
                 _id: this.state.wordsToLearn[currentWord]._id,
                 translation: this.state.translationForCurrentWord
             })
-        })
             .then((response) => {
             })
             .catch(() => {

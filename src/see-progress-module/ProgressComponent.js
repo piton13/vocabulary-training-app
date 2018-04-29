@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
-import GLOBALS from '../globalVariables';
-import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
+import learnWordsService from '../api/learnWordsHttpService';
 
 const styles = StyleSheet.create({
     container: {
@@ -25,18 +24,12 @@ export default class ProgressComponent extends React.Component {
     state = { fetchedData: null };
 
     componentDidMount() {
-        fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.WORDS_STATISTIC}`, {
-            method: 'GET'
-        })
-        .then((response) => response.json())
-        .then((responseJson) => {
-            this.setState({
-                fetchedData: responseJson
+        learnWordsService.getWordsStatistic()
+            .then((responseJson) => {
+                this.setState({
+                    fetchedData: responseJson
+                });
             });
-        })
-        .catch((error) => {
-            alert(error);
-        });
     }
 
     render() {

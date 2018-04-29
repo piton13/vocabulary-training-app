@@ -4,7 +4,7 @@ import GLOBALS from '../globalVariables';
 import INPUT from '../styles/INPUT';
 import BUTTON from '../styles/BUTTON';
 import CONTAINER from '../styles/CONTAINER';
-import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
+import wordsService from '../api/wordsHttpService';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -30,18 +30,10 @@ export default class UpdateWordComponent extends React.Component {
     };
 
     updateWord = () => {
-        fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.WORDS}`, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'PATCH',
-            body: JSON.stringify({
-                _id: this.props.navigation.state.params.wordObj._id,
-                translation: this.state.translation,
-            })
-        })
-            .then(() => this.props.navigation.goBack())
-            .catch((error) => {alert(`something went wrong: ${error}`)});
+        wordsService.updateWord({
+            _id: this.props.navigation.state.params.wordObj._id,
+            translation: this.state.translation,
+        }).then(() => this.props.navigation.goBack());
     };
 
     render() {

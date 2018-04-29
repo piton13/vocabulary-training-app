@@ -4,7 +4,7 @@ import GLOBALS from '../globalVariables';
 import INPUT from '../styles/INPUT';
 import BUTTON from '../styles/BUTTON';
 import CONTAINER from '../styles/CONTAINER';
-import SERVER_ENDPOINTS from '../api/SERVER_ENDPOINTS';
+import wordsService from '../api/wordsHttpService';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -33,20 +33,14 @@ export default class AddWordsComponent extends React.Component {
             translation: text
         });
     };
+
     saveWord = () => {
-        fetch(`${GLOBALS.BASE_URL}${SERVER_ENDPOINTS.WORDS}`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                foreign: this.state.word,
-                translation: this.state.translation,
-            })
-        }).then(() => this.props.navigation.goBack())
-          .catch((error) => {alert(`something went wrong: ${error}`)});
+        wordsService.saveWord({
+            foreign: this.state.word,
+            translation: this.state.translation,
+        }).then(() => this.props.navigation.goBack());
     };
+
     render() {
         return (
             <View style={styles.container}>
