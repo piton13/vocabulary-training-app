@@ -5,6 +5,7 @@ import INPUT from '../styles/INPUT';
 import BUTTON from '../styles/BUTTON';
 import CONTAINER from '../styles/CONTAINER';
 import learnWordsService from '../api/learnWordsHttpService';
+import TrainingService from './TrainingService';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -29,12 +30,12 @@ export default class TrainingComponent extends React.Component {
     };
 
     componentDidMount() {
-        learnWordsService.getTrainingWords()
-        .then((responseJson) => {
-            this.setState({
-                wordsToLearn: responseJson
+        TrainingService.getWordsForTraining()
+            .then((responseJson) => {
+                this.setState({
+                    wordsToLearn: responseJson
+                });
             });
-        });
     }
 
     handleTranslation = (word) => {

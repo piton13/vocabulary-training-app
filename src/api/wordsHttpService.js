@@ -1,7 +1,7 @@
 import SERVER_ENDPOINTS from './SERVER_ENDPOINTS';
 import http from './httpWrapperService';
 
-const getWords = (learnedFlag, config) => {
+const getWords = (learnedFlag = false, config) => {
     return http.get(`${SERVER_ENDPOINTS.WORDS}?learned=${learnedFlag}`);
 };
 
