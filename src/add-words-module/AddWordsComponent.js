@@ -4,7 +4,7 @@ import GLOBALS from '../globalVariables';
 import INPUT from '../styles/INPUT';
 import BUTTON from '../styles/BUTTON';
 import CONTAINER from '../styles/CONTAINER';
-import wordsService from '../api/wordsHttpService';
+import ApiSynchronizationService from '../services/ApiSynchronizationService';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -35,7 +35,7 @@ export default class AddWordsComponent extends React.Component {
     };
 
     saveWord = () => {
-        wordsService.saveWord({
+        ApiSynchronizationService.addNewWord({
             foreign: this.state.word,
             translation: this.state.translation,
         }).then(() => this.props.navigation.goBack());

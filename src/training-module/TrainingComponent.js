@@ -4,8 +4,7 @@ import GLOBALS from '../globalVariables';
 import INPUT from '../styles/INPUT';
 import BUTTON from '../styles/BUTTON';
 import CONTAINER from '../styles/CONTAINER';
-import learnWordsService from '../api/learnWordsHttpService';
-import TrainingService from './TrainingService';
+import ApiSynchronizationService from '../services/ApiSynchronizationService';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -30,7 +29,7 @@ export default class TrainingComponent extends React.Component {
     };
 
     componentDidMount() {
-        TrainingService.getWordsForTraining()
+        ApiSynchronizationService.getWordsToTrain()
             .then((responseJson) => {
                 this.setState({
                     wordsToLearn: responseJson
@@ -45,18 +44,18 @@ export default class TrainingComponent extends React.Component {
     };
 
     checkAnswer = () => {
-        const { currentWord } = this.props.navigation.state.params;
+        const {currentWord} = this.props.navigation.state.params;
 
-        learnWordsService.checkAnswer({
-                _id: this.state.wordsToLearn[currentWord]._id,
-                translation: this.state.translationForCurrentWord
-            })
+        ApiSynchronizationService.checkTrainedWord({
+            _id: this.state.wordsToLearn[currentWord]._id,
+            translation: this.state.translationForCurrentWord
+        })
             .then((response) => {
             })
             .catch(() => {
             })
             .finally(() => {
-                if (currentWord === this.state.wordsToLearn.length -1) {
+                if (currentWord === this.state.wordsToLearn.length - 1) {
                     return this.props.navigation.goBack();
                 }
                 this.props.navigation.setParams({
