@@ -4,14 +4,16 @@ import { View, Text, NetInfo, Dimensions, StyleSheet } from 'react-native';
 const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
     offlineContainer: {
-        backgroundColor: 'red',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        width,
         height: 30,
+        backgroundColor: 'red',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row',
-        width,
-        position: 'absolute',
-        top: 0
+        flexDirection: 'row'
     },
     offlineText: {
         color: 'white'
