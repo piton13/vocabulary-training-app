@@ -22,6 +22,9 @@
     "bail": true
   },
   "dependencies": {
+    "appcenter": "1.5.0",
+    "appcenter-analytics": "1.5.0",
+    "appcenter-crashes": "1.5.0",
     "axios": "0.18.0",
     "expo": "27.0.1",
     "react": "16.3.2",
