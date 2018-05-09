@@ -23,6 +23,9 @@ const AsyncStorageService = {
                 AsyncStorage.setItem('trainedWords', JSON.stringify(word))
             });
     },
+    getTrainedWords() {
+        return AsyncStorage.getItem('trainedWords');
+    },
     storeAddedWord(word) {
         return AsyncStorage.getItem('newWords')
             .then((data) => {
@@ -32,6 +35,9 @@ const AsyncStorageService = {
             .catch(() => {
                 AsyncStorage.setItem('newWords', JSON.stringify(word))
             });
+    },
+    getAddedWords() {
+        return AsyncStorage.getItem('newWords');
     }
 };
 

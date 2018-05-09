@@ -13,10 +13,20 @@ const updateWord = (data, config) => {
     return http.patch(`${SERVER_ENDPOINTS.WORDS}`, data);
 };
 
+const saveAddedWords = (data, config) => {
+    return http.post(`${SERVER_ENDPOINTS.SYNCHRONIZE_WORDS}`, data);
+};
+
+const updateTrainedWords = (data, config) => {
+    return http.patch(`${SERVER_ENDPOINTS.SYNCHRONIZE_WORDS}`, data);
+};
+
 const wordsOperations = {
     getWords,
     saveWord,
-    updateWord
+    updateWord,
+    saveAddedWords,
+    updateTrainedWords
 };
 
 export default wordsOperations;

@@ -10,7 +10,6 @@ const ApiSynchronizationService = {
                 .then(words => AsyncStorageService.storeWordsToTrain(words));
         });
     },
-
     getWordsToTrain() {
         return new Promise((resolve, reject) => {
             NetInfoService.isInternetAvailable()
@@ -30,7 +29,6 @@ const ApiSynchronizationService = {
             }
         });
     },
-
     checkTrainedWord(wordObj) {
         return new Promise((resolve, reject) => {
             NetInfoService.isInternetAvailable()
@@ -48,7 +46,6 @@ const ApiSynchronizationService = {
                 });
         });
     },
-
     addNewWord(wordObj) {
         return new Promise((resolve, reject) => {
             NetInfoService.isInternetAvailable()
@@ -65,6 +62,14 @@ const ApiSynchronizationService = {
                         .catch(() => reject());
                 });
         });
+    },
+    storeAddedWords() {
+        return AsyncStorageService.getAddedWords()
+            .then((words) => wordsService.saveAddedWords(words));
+    },
+    storeLearnedWords() {
+        return AsyncStorageService.getTrainedWords()
+            .then((words) => wordsService.updateTrainedWords(words));
     }
 };
 
