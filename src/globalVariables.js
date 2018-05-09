@@ -1,5 +1,5 @@
 export default {
-    BASE_URL: 'https://ancient-bastion-17497.herokuapp.com',
+    BASE_URL: 'https://vocabulary-training.herokuapp.com',
     COLOR: {
         BACKGROUND: '#fff',
         BLUE: '#363584',

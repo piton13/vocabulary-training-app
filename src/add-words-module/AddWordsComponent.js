@@ -60,7 +60,7 @@ export default class AddWordsComponent extends React.Component {
 
                 <TouchableOpacity style={styles.buttonContainer}
                                   onPress={() => this.saveWord()}
-                                  disabled={!this.state.word || !this.state.translation}
+                                  disabled={!this.state.word}
                                   accessibilityLabel="Add new word button"
                                   testId={'add new word'}>
                     <Text style={styles.buttonText}>Submit</Text>
