@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text, TextInput } from 'react-native';
-import GLOBALS from '../globalVariables';
-import INPUT from '../styles/INPUT';
-import BUTTON from '../styles/BUTTON';
-import CONTAINER from '../styles/CONTAINER';
-import ApiSynchronizationService from '../services/ApiSynchronizationService';
-import ActivityIndicatorComponent from '../common-components/ActivityIndicatorComponent';
+import GLOBALS from '../../globalVariables';
+import INPUT from '../../styles/INPUT';
+import BUTTON from '../../styles/BUTTON';
+import CONTAINER from '../../styles/CONTAINER';
+import ApiSynchronizationService from '../../services/ApiSynchronizationService';
+import ActivityIndicatorComponent from '../../common-components/ActivityIndicatorComponent';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -31,17 +31,13 @@ export default class TrainingComponent extends React.Component {
 
     componentDidMount() {
         ApiSynchronizationService.getWordsToTrain()
-            .then((responseJson) => {
-                this.setState({
-                    wordsToLearn: responseJson
-                });
+            .then((wordsToLearn) => {
+                this.setState({ wordsToLearn });
             });
     }
 
-    handleTranslation = (word) => {
-        this.setState({
-            translationForCurrentWord: word
-        });
+    handleTranslation = (translationForCurrentWord) => {
+        this.setState({ translationForCurrentWord });
     };
 
     checkAnswer = () => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import GLOBALS from '../globalVariables';
-import INPUT from '../styles/INPUT';
-import BUTTON from '../styles/BUTTON';
-import CONTAINER from '../styles/CONTAINER';
-import ApiSynchronizationService from '../services/ApiSynchronizationService';
+import GLOBALS from '../../globalVariables';
+import INPUT from '../../styles/INPUT';
+import BUTTON from '../../styles/BUTTON';
+import CONTAINER from '../../styles/CONTAINER';
+import ApiSynchronizationService from '../../services/ApiSynchronizationService';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -23,15 +23,11 @@ export default class AddWordsComponent extends React.Component {
         translation: ''
     };
 
-    handleWord = (text) => {
-        this.setState({
-            word: text
-        });
+    handleWord = (word) => {
+        this.setState({ word });
     };
-    handleTranslation = (text) => {
-        this.setState({
-            translation: text
-        });
+    handleTranslation = (translation) => {
+        this.setState({ translation });
     };
 
     saveWord = () => {

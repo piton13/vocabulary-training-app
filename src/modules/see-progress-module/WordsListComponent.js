@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
-import wordsService from '../api/wordsHttpService';
-import ActivityIndicatorComponent from '../common-components/ActivityIndicatorComponent';
+import wordsService from '../../api/wordsHttpService';
+import ActivityIndicatorComponent from '../../common-components/ActivityIndicatorComponent';
 
 const styles = StyleSheet.create({
     container: {
@@ -30,10 +30,8 @@ export default class WordsListComponent extends React.Component {
         const { learned } = this.props.navigation.state.params;
 
         wordsService.getWords(learned)
-            .then((responseJson) => {
-                this.setState({
-                    obtainedItems: responseJson
-                });
+            .then((obtainedItems) => {
+                this.setState({ obtainedItems });
             });
     }
 

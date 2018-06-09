@@ -4,11 +4,11 @@ import { StackNavigator } from 'react-navigation';
 import CONTAINER from './src/styles/CONTAINER';
 import NAVIGATION_OPTIONS from './src/styles/NAVIGATION_OPTIONS';
 import HomeComponent from './src/modules/HomeComponent';
-import AddWordsComponent from './src/add-words-module/AddWordsComponent';
-import UpdateWordComponent from './src/add-words-module/UpdateWordComponent';
-import ProgressComponent from './src/see-progress-module/ProgressComponent';
-import TrainingComponent from './src/training-module/TrainingComponent';
-import WordsListComponent from './src/see-progress-module/WordsListComponent';
+import AddWordsComponent from './src/modules/add-words-module/AddWordsComponent';
+import UpdateWordComponent from './src/modules/add-words-module/UpdateWordComponent';
+import ProgressComponent from './src/modules/see-progress-module/ProgressComponent';
+import TrainingComponent from './src/modules/training-module/TrainingComponent';
+import WordsListComponent from './src/modules/see-progress-module/WordsListComponent';
 import OfflineNoticeComponent from './src/common-components/OfflineNoticeComponent';
 import ApiSynchronizationService from './src/services/ApiSynchronizationService';
 

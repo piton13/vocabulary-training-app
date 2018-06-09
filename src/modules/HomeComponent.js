@@ -44,7 +44,7 @@ export default class HomeComponent extends React.Component {
                                   accessibilityLabel="Move to adding new words to DB page"
                                   testId={'move to adding new words state'}>
                     <Text style={styles.buttonTextGreen}>
-                        ADD NEW WORDS
+                        ADD NEW WORD
                     </Text>
                 </TouchableOpacity>
 

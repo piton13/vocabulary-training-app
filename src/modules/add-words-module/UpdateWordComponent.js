@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import GLOBALS from '../globalVariables';
-import INPUT from '../styles/INPUT';
-import BUTTON from '../styles/BUTTON';
-import CONTAINER from '../styles/CONTAINER';
-import wordsService from '../api/wordsHttpService';
+import GLOBALS from '../../globalVariables';
+import INPUT from '../../styles/INPUT';
+import BUTTON from '../../styles/BUTTON';
+import CONTAINER from '../../styles/CONTAINER';
+import wordsService from '../../api/wordsHttpService';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -23,10 +23,8 @@ export default class UpdateWordComponent extends React.Component {
         translation: this.props.navigation.state.params.wordObj.translation
     };
 
-    handleTranslation = (text) => {
-        this.setState({
-            translation: text
-        });
+    handleTranslation = (translation) => {
+        this.setState({ translation });
     };
 
     updateWord = () => {

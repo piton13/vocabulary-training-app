@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
-import learnWordsService from '../api/learnWordsHttpService';
-import ActivityIndicatorComponent from '../common-components/ActivityIndicatorComponent';
+import learnWordsService from '../../api/learnWordsHttpService';
+import ActivityIndicatorComponent from '../../common-components/ActivityIndicatorComponent';
 
 const styles = StyleSheet.create({
     container: {
@@ -26,10 +26,8 @@ export default class ProgressComponent extends React.Component {
 
     componentDidMount() {
         learnWordsService.getWordsStatistic()
-            .then((responseJson) => {
-                this.setState({
-                    fetchedData: responseJson
-                });
+            .then((fetchedData) => {
+                this.setState({ fetchedData });
             });
     }
 
