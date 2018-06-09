@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
 import wordsService from '../api/wordsHttpService';
+import ActivityIndicatorComponent from '../common-components/ActivityIndicatorComponent';
 
 const styles = StyleSheet.create({
     container: {
@@ -40,7 +41,7 @@ export default class WordsListComponent extends React.Component {
         const { navigate } = this.props.navigation;
 
         if (this.state.obtainedItems === null) {
-            return null;
+            return <ActivityIndicatorComponent />;
         }
 
         return (

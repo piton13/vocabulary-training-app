@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import learnWordsService from '../api/learnWordsHttpService';
+import ActivityIndicatorComponent from '../common-components/ActivityIndicatorComponent';
 
 const styles = StyleSheet.create({
     container: {
@@ -35,7 +36,7 @@ export default class ProgressComponent extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         if (this.state.fetchedData === null) {
-            return null;
+            return <ActivityIndicatorComponent />;
         }
         return (
             <View>

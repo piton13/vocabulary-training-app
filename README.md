@@ -46,6 +46,7 @@ Below you'll find information about performing common tasks. The most recent ver
     - [ ] * Implement push notifications that training time has come.
     - [ ] * Implement configuration page (to configure connection to DB, time of frequency trainings, multi language in future)
     - [ ] * ( Refresh words after 3-6 month after learning them )
+    - [x] * Implement activity indicator while data is fetched from server
 
 ## Updating to New Releases
 

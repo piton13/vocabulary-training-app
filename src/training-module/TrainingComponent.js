@@ -5,6 +5,7 @@ import INPUT from '../styles/INPUT';
 import BUTTON from '../styles/BUTTON';
 import CONTAINER from '../styles/CONTAINER';
 import ApiSynchronizationService from '../services/ApiSynchronizationService';
+import ActivityIndicatorComponent from '../common-components/ActivityIndicatorComponent';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER),
@@ -74,7 +75,7 @@ export default class TrainingComponent extends React.Component {
             && this.state.wordsToLearn[params.currentWord].foreign;
 
         if (this.state.wordsToLearn === null) {
-            return null;
+            return <ActivityIndicatorComponent />;
         }
 
         return (
