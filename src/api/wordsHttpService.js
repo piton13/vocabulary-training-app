@@ -1,6 +1,10 @@
 import SERVER_ENDPOINTS from './SERVER_ENDPOINTS';
 import http from './httpWrapperService';
 
+const authorize = (data, config) => {
+    return http.post(`${SERVER_ENDPOINTS.LOGIN}`, data);
+};
+
 const getWords = (learnedFlag = false, config) => {
     return http.get(`${SERVER_ENDPOINTS.WORDS}?learned=${learnedFlag}`);
 };
@@ -22,6 +26,7 @@ const updateTrainedWords = (data, config) => {
 };
 
 const wordsOperations = {
+    authorize,
     getWords,
     saveWord,
     updateWord,

@@ -63,6 +63,21 @@ const ApiSynchronizationService = {
                 });
         });
     },
+    authorize(authObj) {
+        return new Promise((resolve, reject) => {
+            NetInfoService.isInternetAvailable()
+                .then(() => {
+                    alert('send to server');
+                    return wordsService.authorize(authObj)
+                        .catch(() => reject());
+                })
+                .then(resolve)
+                .catch(() => {
+                    alert('send to storage');
+                    resolve();
+                });
+        });
+    },
     storeAddedWords() {
         return AsyncStorageService.getAddedWords()
             .then((words) => wordsService.saveAddedWords(words));

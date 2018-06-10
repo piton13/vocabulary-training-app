@@ -11,6 +11,7 @@ import TrainingComponent from './src/modules/training-module/TrainingComponent';
 import WordsListComponent from './src/modules/see-progress-module/WordsListComponent';
 import OfflineNoticeComponent from './src/common-components/OfflineNoticeComponent';
 import ApiSynchronizationService from './src/services/ApiSynchronizationService';
+import LoginComponent from './src/common-components/LoginComponent';
 
 const styles = StyleSheet.create({
     container: Object.assign({}, CONTAINER.CONTAINER, {
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
 });
 
 const RootStack = StackNavigator({
+    Login: { screen: LoginComponent },
     Home: { screen: HomeComponent },
     Trainings: { screen: TrainingComponent },
     Statistic: { screen: ProgressComponent },
@@ -27,7 +29,7 @@ const RootStack = StackNavigator({
     UpdateWord: { screen: UpdateWordComponent },
     WordsList: { screen: WordsListComponent }
 }, {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
     navigationOptions: NAVIGATION_OPTIONS.HEADER
 });
 
