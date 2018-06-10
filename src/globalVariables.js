@@ -1,5 +1,5 @@
 export default {
-    BASE_URL: 'https://vocabulary-training.herokuapp.com',
+    BASE_URL: 'https://vocabulary-training.herokuapp.com/api/v1',
     COLOR: {
         BACKGROUND: '#fff',
         BLUE: '#363584',
